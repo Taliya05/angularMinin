@@ -1,11 +1,23 @@
 import {Component} from '@angular/core';
 
+export interface Post {
+  title: string
+  text: string
+  id?: number
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  posts: Post[] = [
+    {title: 'I want to learn Angular', text: 'I am still learning Angular', id: 1},
+    {title: 'Directives and pipes', text: 'Learning directives and pipes', id: 2}
+  ]
+}
+
   // backgroundToggle = 0
   // toggle: any = false
   // arr = [1, 1, 2, 3, 5, 8, 13]
@@ -27,5 +39,5 @@ export class AppComponent {
   //
   // ]
 
-  now: Date = new Date()
-}
+  // now: Date = new Date()
+// }
