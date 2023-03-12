@@ -3,12 +3,9 @@ import {Component} from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Initial'
+  backgroundToggle = 0
 
-  // onInput(event: any) {
-  //   this.title = event.target.value
-  // }
 }
