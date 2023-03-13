@@ -1,14 +1,23 @@
 <div class="container">
   <h1>Hello Angular!</h1>
+  <h2>Subheader</h2>
 
-  <app-post-form></app-post-form>
+  <app-post-form
+    (onAdd) = "updatePosts($event)"
+  ></app-post-form>
 
   <hr/>
 
   <app-post
     *ngFor="let p of posts"
     [post] = "p"
-  ></app-post>
+    (onRemove)="removePost($event)"
+  >
+    <div #info>
+        <small *ngIf="p.text.length > 10; else short">long post</small>
+        <ng-template #short>Short post</ng-template>
+    </div>
+  </app-post>
 
 
 </div>

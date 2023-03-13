@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 
-export interface Post {
+export interface Post  {
   title: string
   text: string
   id?: number
@@ -16,6 +16,17 @@ export class AppComponent {
     {title: 'I want to learn Angular', text: 'I am still learning Angular', id: 1},
     {title: 'Directives and pipes', text: 'Learning directives and pipes', id: 2}
   ]
+
+  updatePosts(post: Post) {
+    this.posts.unshift(post)
+    // console.log('Post', post)
+  }
+
+  removePost(id: number) {
+    console.log('Id to remove', id)
+    this.posts = this.posts.filter(p => p.id !== id)
+
+  }
 }
 
   // backgroundToggle = 0
