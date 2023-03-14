@@ -4,6 +4,8 @@ import { AppComponent } from './app.component';
 import {FormsModule} from "@angular/forms";
 import { PostComponent } from './post/post.component';
 import { PostFormComponent } from './post-form/post-form.component';
+import {StyleDirective} from "./directives/style.directives";
+
 
 
 @NgModule({
@@ -11,6 +13,7 @@ import { PostFormComponent } from './post-form/post-form.component';
     AppComponent,
     PostComponent,
     PostFormComponent,
+    StyleDirective
   ],
   imports: [
     BrowserModule,
