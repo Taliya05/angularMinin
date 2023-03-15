@@ -36,9 +36,10 @@ export class PostComponent implements
   OnDestroy
 
 {
-  @Input() post: Post | undefined
+  @Input() post!: Post
   @Output() onRemove = new EventEmitter<number>()
   @ContentChild('info', {static: true}) infoRef: ElementRef | undefined
+
   constructor() {}
   ngOnChanges(changes: SimpleChanges): void {
     console.log('ngOnChanges', changes)

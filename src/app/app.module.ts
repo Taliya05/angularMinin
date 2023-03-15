@@ -5,6 +5,7 @@ import {FormsModule} from "@angular/forms";
 import { PostComponent } from './post/post.component';
 import { PostFormComponent } from './post-form/post-form.component';
 import {StyleDirective} from "./directives/style.directives";
+import { IfNotDirective } from './directives/if-not.directive';
 
 
 
@@ -13,7 +14,8 @@ import {StyleDirective} from "./directives/style.directives";
     AppComponent,
     PostComponent,
     PostFormComponent,
-    StyleDirective
+    StyleDirective,
+    IfNotDirective
   ],
   imports: [
     BrowserModule,

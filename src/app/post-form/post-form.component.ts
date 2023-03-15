@@ -1,4 +1,4 @@
-import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {Post} from "../app.component";
 
 @Component({
@@ -11,19 +11,27 @@ export class PostFormComponent implements OnInit {
   @ViewChild('titleInput') inputRef: ElementRef | undefined
   title!: ''
   text!: ''
+
+
   constructor() {
   }
   ngOnInit() {
   }
   addPost() {
     if(this.text.trim() && this.title.trim()) {
+      // @ts-ignore
       const post: Post = {
         title: this.title,
-        text: this.text
+        text: this.text,
+        date: new Date(),
+
       }
       this.onAdd.emit(post)
       this.title = ''
       this.text = ''
+      // @ts-ignore
+      this.date = Date
+
     }
 
   }
