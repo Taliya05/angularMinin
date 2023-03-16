@@ -6,6 +6,10 @@ import { PostComponent } from './post/post.component';
 import { PostFormComponent } from './post-form/post-form.component';
 import {StyleDirective} from "./directives/style.directives";
 import { IfNotDirective } from './directives/if-not.directive';
+import {MultByPipes} from "./pipes/mult-by.pipes";
+import { ExMarksPipe } from './pipes/ex-marks.pipe';
+// import { FilterPipe } from './pipes/filter.pipe';
+
 
 
 
@@ -15,7 +19,10 @@ import { IfNotDirective } from './directives/if-not.directive';
     PostComponent,
     PostFormComponent,
     StyleDirective,
-    IfNotDirective
+    IfNotDirective,
+    MultByPipes,
+    ExMarksPipe,
+    // FilterPipe
   ],
   imports: [
     BrowserModule,
