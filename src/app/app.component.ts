@@ -4,6 +4,8 @@ import {Observable} from "rxjs";
 export interface Post {
   title: string
   text: string
+  d: Date
+
 
 }
 
@@ -15,15 +17,18 @@ export interface Post {
 export class AppComponent {
   search = ''
   searchField = 'title'
+
   post: Post[] = [
-    {title: 'Milk', text: 'The best milk in the world'},
-    {title: 'Bread', text: 'The best bread in the world'},
-    {title: 'Cheese', text: 'The best cheese in the world'}
+    {title: 'Milk', text: 'The best milk in the world', d: new Date},
+    {title: 'Bread', text: 'The best bread in the world', d: new Date(2023, 2, 15, 3, 24, 0)},
+    {title: 'Cheese', text: 'The best cheese in the world', d: new Date(2023, 2, 13, 3, 24, 0)}
   ]
   addPost() {
     this.post.unshift({
       title: 'Angular',
-      text: 'Angular pipes'
+      text: 'Angular pipes',
+      d: new Date()
+
     })
   }
   p: Promise<string> = new Promise<string>(resolve => {
@@ -38,6 +43,21 @@ export class AppComponent {
       obs.next(new Date())
     }, 1000)
   })
+
+
+
  }
+
+
+// сделай, чтобы если дата сегодняшнее,
+// то выводило просто время,
+// если вчерашенее, то Yesterday, hh:mm:ss
+// А если позавчера и далее, то полное ГГ:ММ:ДД ЧЧ:мм:сс
+// месяц полностью
+
+// new Date(2023, 2, 13, 3, 24, 0)             2023, 2, 13, 3, 24, 0
+
+
+
 
 

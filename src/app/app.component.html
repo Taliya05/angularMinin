@@ -19,6 +19,7 @@
     *ngFor="let p of post | filterPipe:search:searchField"
     class="card"
   >
+    <h3>{{p.d | datePipe}}</h3>
     <h2>{{p.title}}</h2>
     <p>{{p.text}}</p>
   </div>

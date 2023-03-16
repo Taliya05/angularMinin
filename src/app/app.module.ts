@@ -5,13 +5,15 @@ import {FormsModule} from "@angular/forms";
 import {StyleDirective} from "./directives/style.directives";
 import { IfNotDirective } from './directives/if-not.directive';
 import { FilterPipe } from './pipes/filter.pipe';
+import { DatePipePipe } from './pipes/date-pipe.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     StyleDirective,
     IfNotDirective,
-    FilterPipe
+    FilterPipe,
+    DatePipePipe
   ],
   imports: [
     BrowserModule,
