@@ -1,158 +1,22 @@
-<div class="container_Dir">
-  <h3>Directives</h3>
-  <p appStyle class="p_Dir">Lorem Lorem Lorem Lorem Lorem</p>
-  <p class="p_Dir" [appStyle]="'red'" [dStyles]="{border: '1px solid blue', borderRadius: '5px'}">Lorem Lorem Lorem
-    Lorem Lorem</p>
-  <p class="p_Dir" [appStyle]="'blue'" [dStyles]="{border: '3px solid red', borderRadius: '5px'}">Lorem Lorem Lorem
-    Lorem Lorem</p>
-
-  <h3>Pipes</h3>
-  <p class="pipes">{{e | number:'1.1-5'}}</p>
-  <p class="pipes">{{e | number:'3.1-2'}}</p>
-  <p class="pipes">{{e | number:'1.0-0'}}</p>
-  <p class="pipes">{{stp | uppercase | titlecase}}</p>
-  <p class="pipes">{{stp | titlecase | slice:1:5}}</p>
-  <p class="pipes">{{stp | titlecase | slice:1:-3}}</p>
-  <p class="pipes">{{dateP | date: 'dd MMMM, yyyy, HH:mm:ss'}}</p>
-  <p class="pipes">{{float | number}}</p>
-  <p class="pipes">{{float | percent}}</p>
-  <p class="pipes">{{float | currency}}</p>
-  <pre class="pipes">{{obj | json}}</pre>
-  <!--/===================== мой пайп ================================/-->
-  <p class="pipes">{{10 | mult}}</p>
-  <p class="pipes">{{10 | mult:2}}</p>
-  <p class="pipes">{{10 | mult:3}}</p>
-  <p class="pipes">{{10 | mult:5}}</p>
-  <p class="pipes">{{'Hello    World    '  | exMarks}}</p>
-</div>
-
-<!--/======================================================================/-->
-<button class="btn" (click)="isVisible = !isVisible">Toggle</button>
-
-<!--<div *ngIf="isVisible" class="wrap">-->
-<!--  <p>Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem</p>-->
-<!--</div>-->
-<!--/===== или ====/-->
-<!--<ng-template [ngIf]="isVisible">-->
-<!--<div class="wrap">-->
-<!--  <p>Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem</p>-->
-<!--</div>-->
-<!--</ng-template>-->
-
-<!--/====================== или =====================================/-->
-
-<!--<div *appIfNot="!isVisible" class="wrap">-->
-<!--  <p>Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem</p>-->
-<!--</div>-->
-<!--/===== или ====/-->
-<ng-template [appIfNot]="!isVisible">
-  <div class="wrap">
-    <p>Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem</p>
-  </div>
-</ng-template>
-
-<!--/======================================================================/-->
-
 <div class="container">
-  <h1>Hello Angular!</h1>
-  <h2>Subheader</h2>
+  <h1>Angular Pipes</h1>
 
-<!--  <input type="text" [(ngModel)]="search">-->
+  <button class="btn" (click)="searchField = 'title'">Title</button>
+  <button class="btn" (click)="searchField = 'text'">Text</button>
 
-  <app-post-form
-    (onAdd)="updatePosts($event)"
-  ></app-post-form>
+  <input type="text" [(ngModel)]="search">
 
-  <hr/>
-
-  <app-post
-    *ngFor="let p of posts"
-    [post]="p"
-    (onRemove)="removePost($event)"
+  <div
+    *ngFor="let p of post | filterPipe:search:searchField"
+    class="card"
   >
-    <div #info>
-      <small *ngIf="p.text.length > 10; else short">long post</small>
-      <ng-template #short>Short post</ng-template>
-    </div>
-  </app-post>
-
+    <h2>{{p.title}}</h2>
+    <p>{{p.text}}</p>
+  </div>
 
 </div>
 
 
-<!--<button (click)="backgroundToggle = backgroundToggle + 1">Toggle</button>-->
 
-
-<!--<div [ngStyle]="{-->
-<!--width: '200px',-->
-<!--height: '200px',-->
-<!--borderRadius: '5px',-->
-<!--border: '1px solid #ccc',-->
-<!--background: backgroundToggle ? 'red' : 'blue'-->
-<!--}">-->
-<!--</div>-->
-
-<!--=========   ИЛИ   ==============-->
-
-<!--<p [ngClass]="{-->
-<!--red: backgroundToggle,-->
-<!--blue: !backgroundToggle-->
-<!--}">Lorem Lorem Lorem Lorem Lorem Lorem Lorem</p>-->
-
-<!--=========   ИЛИ   ==============-->
-
-<!--<p-->
-<!--  [class.blue]="backgroundToggle%3 === 0"-->
-<!--  [class.red]="backgroundToggle%3 === 1"-->
-<!--  [class.green]="backgroundToggle%3 === 2"-->
-<!--&gt;Lorem Lorem Lorem Lorem Lorem Lorem Lorem</p>-->
-
-<!--=========   ИЛИ   ==============-->
-<!--<button (click)="toggle = !toggle">Toggle</button>-->
-
-
-<!--<p *ngIf="toggle" class="red">Lorem Lorem Lorem Lorem Lorem Lorem Lorem</p>-->
-<!--<p *ngIf="!toggle" class="blue">Lorem Lorem Lorem Lorem Lorem Lorem Lorem</p>-->
-
-<!--=========   ИЛИ   ==============-->
-
-<!--<p *ngIf="toggle; else bluePar" class="red">Lorem Lorem Lorem Lorem Lorem Lorem Lorem</p>-->
-<!--<ng-template #bluePar>-->
-<!--<p *ngIf="!toggle" class="blue">Lorem Lorem Lorem Lorem Lorem Lorem Lorem</p>-->
-<!--</ng-template>-->
-
-<!--=========   ИЛИ   ==============-->
-
-<!--<button (click)="toggle = 111">Set 111</button>-->
-
-<!--<div [ngSwitch]="toggle">-->
-<!--  <p *ngSwitchCase="true" class="red">Lorem Lorem Lorem Lorem Lorem Lorem Lorem</p>-->
-<!--  <p *ngSwitchCase="false" class="blue">Lorem Lorem Lorem Lorem Lorem Lorem Lorem</p>-->
-<!--  <p *ngSwitchDefault>Lorem Lorem Lorem Lorem Lorem Lorem Lorem</p>-->
-<!--</div>-->
-
-
-<!--<ul>-->
-<!--  <li *ngFor="let num of arr; let idx = index">-->
-<!--    {{idx + 1}} - <strong>{{num}}</strong>-->
-<!--  </li>-->
-<!--</ul>-->
-
-<!--<ul style="list-style: none">-->
-<!--  <li *ngFor="let post of obj">-->
-<!--    <p>{{post.title}} <b>{{post.author}}</b></p>-->
-<!--    <ul style="list-style: none">-->
-<!--      <li *ngFor="let comment of post.comments">-->
-<!--        <div>-->
-<!--          <small>{{comment.name}}</small>-->
-<!--          <p>{{comment.text}}</p>-->
-<!--        </div>-->
-<!--      </li>-->
-<!--    </ul>-->
-<!--  </li>-->
-<!--</ul>-->
-
-
-<!--<p>{{now | date: 'dd.MM.YYY HH:mm z' | lowercase}}</p>-->
 
 
