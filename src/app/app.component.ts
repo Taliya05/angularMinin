@@ -5,6 +5,7 @@ export interface Post {
   title: string
   text: string
   d: Date
+  id?: number
 
 
 }
@@ -36,14 +37,11 @@ export class AppComponent {
       resolve('Promise Resolved')
     }, 4000)
   })
-
-
   date: Observable<Date> = new Observable(obs => {
     setInterval( () => {
       obs.next(new Date())
     }, 1000)
   })
-
 
 
  }
