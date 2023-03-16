@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
 import {Observable} from "rxjs";
+import {CounterService} from "./services/counter.service";
+import {LocalCounterService} from "./services/local-counter.service";
 
 export interface Post {
   title: string
@@ -13,7 +15,8 @@ export interface Post {
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  providers: [LocalCounterService]
 })
 export class AppComponent {
   search = ''
@@ -24,6 +27,7 @@ export class AppComponent {
     {title: 'Bread', text: 'The best bread in the world', d: new Date(2023, 2, 15, 3, 24, 0)},
     {title: 'Cheese', text: 'The best cheese in the world', d: new Date(2023, 2, 13, 3, 24, 0)}
   ]
+
   addPost() {
     this.post.unshift({
       title: 'Angular',
@@ -32,19 +36,32 @@ export class AppComponent {
 
     })
   }
+
   p: Promise<string> = new Promise<string>(resolve => {
     setTimeout(() => {
       resolve('Promise Resolved')
     }, 4000)
   })
   date: Observable<Date> = new Observable(obs => {
-    setInterval( () => {
+    setInterval(() => {
       obs.next(new Date())
     }, 1000)
   })
 
+  constructor(
+    public counterService: CounterService,
+    public localCounterService: LocalCounterService
+    ) {}
 
- }
+  // updatePost(post: Post) {
+  //   let maxId = 0
+  //   this.post.forEach(value => {
+  //     if (value.id && value.id > maxId) {
+  //       maxId = value.id
+  //     }
+  //   })
+  // }
+}
 
 
 // сделай, чтобы если дата сегодняшнее,

@@ -6,6 +6,9 @@ import {StyleDirective} from "./directives/style.directives";
 import { IfNotDirective } from './directives/if-not.directive';
 import { FilterPipe } from './pipes/filter.pipe';
 import { DatePipePipe } from './pipes/date-pipe.pipe';
+import { StrlengthPipe } from './pipes/strlength.pipe';
+import {CounterService} from "./services/counter.service";
+import { CounterComponent } from './counter/counter.component';
 
 @NgModule({
   declarations: [
@@ -13,13 +16,18 @@ import { DatePipePipe } from './pipes/date-pipe.pipe';
     StyleDirective,
     IfNotDirective,
     FilterPipe,
-    DatePipePipe
+    DatePipePipe,
+    StrlengthPipe,
+    CounterComponent
   ],
   imports: [
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    CounterService
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
