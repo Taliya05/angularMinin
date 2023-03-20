@@ -7,6 +7,12 @@ import {MyValidators} from "./my.validators";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements  OnInit {
+  //======================================================
+  appState = 'off'
+  handleChange() {
+    console.log(this.appState)
+  }
+  //======================================================
   form: FormGroup
   submit() {
     if (this.form.valid) {
@@ -57,6 +63,8 @@ export class AppComponent implements  OnInit {
   getSkills(): AbstractControl[]{
     return (this.form.get('skills') as FormArray).controls
   }
+
+
 }
 
 
