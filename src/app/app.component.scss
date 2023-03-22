@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 * {
@@ -54,10 +53,15 @@ img {
     color: #000;
     cursor: not-allowed;
   }
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
-.btn:hover {
-  opacity: 0.8;
+.btn.btn-danger {
+  background: #dc3545;
+  color: #fff;
 }
 
 .form-control {
@@ -85,6 +89,15 @@ img {
   padding: 1rem;
   border: #ccc 1px dotted;
   margin: 0.7rem 0;
+
+  p {
+    display: flex;
+    justify-content: space-between;
+
+    span.completed {
+      text-decoration: line-through;
+    }
+  }
 }
 
 input,
@@ -102,20 +115,9 @@ hr {
   margin: .5rem 0;
 }
 
-
 p {
   font-size: 1.5rem;
-}
-input {
-   &.ng-invalid.ng-touched {
-     border: 1px solid red;
-   }
-  &.ng-valid.ng-touched {
-    border: 1px solid green;
+  &.error {
+    color: red;
   }
 }
-
-.k-alt{
-  background: aquamarine;
-}
-
