@@ -2,30 +2,31 @@ import {NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import {FormsModule} from "@angular/forms";
-import { AboutComponent } from './about/about.component';
-import { AboutExtraComponent } from './about-extra/about-extra.component';
-import { HomeComponent } from './home/home.component';
-import { PostComponent } from './post/post.component';
-import { PostsComponent } from './posts/posts.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { AboutPageComponent } from './about-page/about-page.component';
+import { AboutExtraPageComponent } from './about-page/about-extra-page/about-extra-page.component';
+import {ColorDirective} from "./shared/color.directive";
+import {PageNamePipe} from "./shared/page-name.pipe";
 import {AppRoutingModule} from "./app-routing.module";
-import { ErrorPageComponent } from './about/error-page/error-page.component';
 
+
+
+let PostComponent;
 
 @NgModule({
   declarations: [
     AppComponent,
-    AboutComponent,
-    AboutExtraComponent,
-    HomeComponent,
-    PostComponent,
-    PostsComponent,
-    ErrorPageComponent
+    HomePageComponent,
+    AboutPageComponent,
+    AboutExtraPageComponent,
+    ColorDirective,
+    PageNamePipe
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule
-
   ],
   providers: [],
   bootstrap: [AppComponent]
