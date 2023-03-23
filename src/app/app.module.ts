@@ -8,7 +8,8 @@ import { HomeComponent } from './home/home.component';
 import { PostComponent } from './post/post.component';
 import { PostsComponent } from './posts/posts.component';
 import {AppRoutingModule} from "./app-routing.module";
-import { ErrorPageComponent } from './about/error-page/error-page.component';
+import {ErrorPageComponent} from "./error-page/error-page.component";
+
 
 
 @NgModule({

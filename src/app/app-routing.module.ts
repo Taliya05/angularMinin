@@ -5,9 +5,9 @@ import {AboutComponent} from "./about/about.component";
 import {PostsComponent} from "./posts/posts.component";
 import {PostComponent} from "./post/post.component";
 import {AboutExtraComponent} from "./about-extra/about-extra.component";
-import {ErrorPageComponent} from "./about/error-page/error-page.component";
 import {AuthGuard} from "./auth.guard";
 import {PostResolver} from "./post.resolver";
+import {ErrorPageComponent} from "./error-page/error-page.component";
 
 
 // http://localhost:4200/   ---> HomeComponent
