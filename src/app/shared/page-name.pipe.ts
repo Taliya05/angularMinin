@@ -1,8 +1,11 @@
-import {PipeTransform} from "@angular/core";
+import {Pipe, PipeTransform} from "@angular/core";
 
-
-export class PageNamePipe implements PipeTransform {
+@Pipe({
+  name: 'pageName',
+})
+export class PageNamePipe implements PipeTransform{
   transform(value: string): string {
     return value + '!!!'
   }
 }
+
