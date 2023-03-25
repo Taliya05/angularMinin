@@ -1,0 +1,16 @@
+div {
+  display: inline-block;
+}
+div button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: #fff;
+  background: #bdbdbd;
+  border: none;
+  outline: none;
+}
+div button.active {
+  background: #5790c9;
+}
+
+/*# sourceMappingURL=switch.component.css.map */
