@@ -4,20 +4,20 @@ import {AppComponent} from './app.component';
 import {FormsModule} from "@angular/forms";
 import {CounterComponent} from "./counter/counter.component";
 import {PostsComponent} from "./posts/posts.component";
-
+import {RoutingComponent} from './routing/routing.component';
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [
     AppComponent,
     CounterComponent,
-    PostsComponent
-
-
+    PostsComponent,
+    RoutingComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
-
+    FormsModule,
+    RouterModule.forRoot([])
   ],
   providers: [],
   bootstrap: [AppComponent]
