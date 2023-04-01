@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {animate, state, style, transition, trigger} from "@angular/animations";
+import {animate, AnimationEvent, group, keyframes, query, state, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-root',
@@ -19,19 +19,49 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
       }))),
       transition('start => end', animate(450)),
       transition('end => start', animate('800ms ease-in-out')),
-      transition('* <=> special', [style({background: 'green'}), animate('1s', style({background: 'pink'})), animate(750)]),
-
+      transition('* <=> special', [group([query('h4', animate(1500, style({
+        fontSize: '.5rem',
+        color: '#000'
+      }))), style({background: 'green'}), animate('1s', style({background: 'pink'})), animate(750)])]),
+      // 'void=>*' из пустого в любое
+      transition(':enter', [
+        // style({opacity: 0}), animate('850ms ease-out')
+        animate('4s', keyframes([
+          style({background: 'red'}),
+          style({background: 'pink'}),
+          style({background: 'orange'}),
+          style({background: 'purple'}),
+        ]))
+      ]),
+      // '*=>void' из любого в пустое
+      transition(':leave', [style({opacity: 1}),
+        group([animate('750ms ease-out', style({
+          opacity: 0,
+          transform: 'scale(1.2)'
+        })), animate(750, style({color: '#000', fontWeight: 'bold'}))])]),
     ])
   ]
 })
 export class AppComponent {
   boxState = 'start'
+  boxState2 = 'end'
+  visible = true
+
 
   constructor() {
   }
 
   animate() {
     this.boxState = this.boxState === 'end' ? 'start' : 'end'
+    this.boxState2 = this.boxState2 === 'end' ? 'start' : 'end'
+  }
+
+  animationStarted(event: AnimationEvent) {
+    console.log('animationStarted', event)
+  }
+
+  animationDone(event: AnimationEvent) {
+    console.log('animationDone', event)
   }
 }
 

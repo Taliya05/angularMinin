@@ -1,14 +1,32 @@
 <button (click)="animate()">Animate</button>
-<button (click)="boxState='special'">Set Special State</button>
+<button (click)="boxState='special'; boxState2='special'">Set Special State</button>
+<button (click)="visible=!visible">Toggle Visibility</button>
+
 <hr>
+<div class="container">
 
-<div class="wrap">
+  <div class="wrap">
 
-  <div
-    class="box"
-    [@box]="boxState"
-  >
-    <h4>{{boxState | uppercase}}</h4>
+    <div
+      class="box"
+      *ngIf="visible"
+      [@box]="boxState"
+      (@box.start)="animationStarted($event)"
+      (@box.done)="animationDone($event)"
+    >
+      <h4>{{boxState | uppercase}}</h4>
 
+    </div>
   </div>
+  <div class="wrap">
+
+    <div
+      class="box"
+      [@box]="boxState2"
+    >
+      <h4>{{boxState2 | uppercase}}</h4>
+
+    </div>
+  </div>
+
 </div>
